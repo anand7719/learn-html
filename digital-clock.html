@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script>
+    	var myInterval = window.setInterval(updateTime, 1000);
+
+    	function updateTime() {
+			var currentTime = new Date();
+            document.getElementById("min").innerHTML = currentTime.getMinutes();
+        	document.getElementById("seconds").innerHTML = currentTime.getSeconds();
+        }
+        function stopTimer() {
+        	window.clearInterval(myInterval)
+        }
+
+    </script>
+</head>
+<body>
+<span>
+    <span id="min" style="font-size: 100px;color: #FF00FF; font-family: sans-serif"></span>
+    <span style="font-size: 100px">:</span>
+    <span id="seconds" style="font-size: 100px;color:#FF00FF;font-family: sans-serif"></span>
+    <input type="button" onClick="stopTimer();" value="Stop Clock"/>
+</span>
+
+</body>
+</html> 
