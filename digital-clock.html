@@ -2,17 +2,26 @@
 <html>
 <head>
 	<script>
-    	var myInterval = window.setInterval(updateTime, 1000);
+    	var myInterval;
+       startTimer()
 
     	function updateTime() {
 		var currentTime = new Date();
                 document.getElementById("min").innerHTML = currentTime.getMinutes();
-        	document.getElementById("seconds").innerHTML = currentTime.getSeconds();
+		var seconds = currentTime.getSeconds();
+		if (seconds < 10) {
+	        	document.getElementById("seconds").innerHTML = "0"+seconds;
+		} else {
+			document.getElementById("seconds").innerHTML = seconds;
+		}
         }
         function stopTimer() {
         	window.clearInterval(myInterval)
         }
+        function startTimer() {
+        	 myInterval = window.setInterval(updateTime, 1000);
 
+        }
     </script>
 </head>
 <body>
@@ -20,7 +29,9 @@
     <span id="min" style="font-size: 100px;color: #FF00FF; font-family: sans-serif"></span>
     <span style="font-size: 100px">:</span>
     <span id="seconds" style="font-size: 100px;color:#FF00FF;font-family: sans-serif"></span>
+<br/>
     <input type="button" onClick="stopTimer();" value="Stop Clock"/>
+    <input type="button" onClick="startTimer();" value="Start Clock"/>
 </span>
 
 </body>
