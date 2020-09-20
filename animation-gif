@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  img {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    position: relative;
+    animation-name: moveBlock;
+    animation-duration: 4s;
+    animation-delay: 2s;
+  }
+
+  @keyframes moveBlock {
+    0%   {background-color:red; left:0px; top:0px;}
+    25%  {background-color:yellow; left:50%; top:0px;}
+    50%  {background-color:blue; left:50%; top:200px;}
+    75%  {background-color:green; left:0px; top:200px;}
+    100% {background-color:red; left:0px; top:0px;}
+  }
+</style>
+</head>
+<body>
+<img src="https://pro2-bar-s3-cdn-cf.myportfolio.com/a382056517b98a4da3d70929ae5482ec/8157d8a3-c616-4d57-8c41-6dcd12bbae6f_rw_1920.gif" width="10px" height=10px>
+
+</body>
+</html>
