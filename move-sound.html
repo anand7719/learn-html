@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function moveTheGuy() {
+  var theGuy = document.getElementById("theGuy");
+var myAudio = document.getElementById("myAudio"); 
+
+  theGuy.style.position = "absolute";
+  var randomLeft = Math.floor((Math.random() * 600) + 1);
+  theGuy.style.left = randomLeft + "px";
+
+  var randomRight = Math.floor((Math.random() * 600) + 1);
+  theGuy.style.right = randomRight + "px";
+
+  var randomBottom = Math.floor((Math.random() * 600) + 1);
+  theGuy.style.bottom = randomBottom + "px";
+
+  var randomTop = Math.floor((Math.random() * 600) + 1);
+  theGuy.style.top = randomTop + "px";
+  myAudio.play()
+}
+</script>
+</head>
+<body>
+<audio id="myAudio">
+  <source src="https://www.pacdv.com/sounds/interface_sound_effects/sound110.wav" type="audio/ogg">
+</audio>
+<div  style="background-color: red">
+<img id="theGuy"  onMouseOver="moveTheGuy()"  src="https://pro2-bar-s3-cdn-cf.myportfolio.com/a382056517b98a4da3d70929ae5482ec/8157d8a3-c616-4d57-8c41-6dcd12bbae6f_rw_1920.gif" width="100px" height=100px>
+</div>
+
+</body>
+</html>
