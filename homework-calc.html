@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+    <title>Calculator</title>
+    <style>
+    button {
+      width: 125px;
+      margin-bottom: 5px;
+    }
+    </style>
+
+  </head>
+  <body>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+    <div class="container border" style="width:500px">
+        <h1>Calculator</h1>
+        <input id="result" disabled value=0 class="form-control text-right h4" type="text" style="width:100%; height: 50px; font-size: 2rem">
+        <div class="row">
+          <div class="col-sm">
+            <button type="button" onclick="displayValue(7)" class="btn btn-secondary cal-btn btn-block">7</button>
+          </div>
+          <div class="col-sm">
+            <button type="button" onclick="displayValue(8)" class="btn btn-secondary btn-block">8</button>
+          </div>
+          <div class="col-sm">
+            <button type="button" onclick="displayValue(9)" class="btn btn-secondary btn-block">9</button>
+          </div>
+          <div class="col-sm">
+            <button type="button" class="btn btn-dark btn-block" style="background-color: #ff9d0a">&divide;</button>
+          </div>
+        </div>
+        <div class="row">
+        <div class="col-sm">
+          <button type="button" onclick="displayValue(4)" class="btn btn-secondary btn-block">4</button>
+        </div>
+        <div class="col-sm">
+          <button type="button" onclick="displayValue(5)" class="btn btn-secondary btn-block">5</button>
+        </div>
+        <div class="col-sm">
+          <button type="button" onclick="displayValue(6)" class="btn btn-secondary btn-block">6</button>
+        </div>
+        <div class="col-sm">
+          <button type="button" class="btn btn-dark btn-block" style="background-color: #ff9d0a">*</button>
+        </div>
+      </div>
+      <div class="row">
+            <div class="col-sm">
+              <button type="button" onclick="displayValue(3)" class="btn btn-secondary btn-block">3</button>
+            </div>
+            <div class="col-sm">
+              <button type="button" onclick="displayValue(2)" class="btn btn-secondary btn-block">2</button>
+            </div>
+            <div class="col-sm">
+              <button type="button" onclick="displayValue(1)" class="btn btn-secondary btn-block">1</button>
+            </div>
+            <div class="col-sm">
+              <button type="button" onclick="add()" class="btn btn-dark btn-block" style="background-color: #ff9d0a">+</button>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-sm">
+            <button type="button" class="btn btn-secondary btn-block">0</button>
+          </div>
+          <div class="col-sm">
+              <button type="button" class="btn btn-secondary btn-block">.</button>
+          </div>
+          <div class="col-sm">
+            <button type="button" onclick="setValueTo0()" class="btn btn-dark btn-block" style="background-color: #ff9d0a">C</button>
+          </div>
+          <div class="col-sm">
+            <button type="button" onclick="showResult()" class="btn btn-dark btn-block" style="background-color: #ff9d0a">=</button>
+          </div>
+        </div>
+    </div>
+    <script>
+        let x = 0;
+        let action=""
+        function showResult() {
+            if(action == "ADD") {
+              document.getElementById("result").value = (Number(x) + Number(document.getElementById("result").value));
+            }
+        }
+        function add() {
+          x = document.getElementById("result").value
+          document.getElementById("result").value = ''
+          action = 'ADD'
+        }
+        function setValueTo0() {
+          document.getElementById("result").value = 0;
+        }
+        function displayValue(input) {
+          let existingValue = document.getElementById("result").value;
+          if(existingValue == 0) {
+            existingValue = '';
+          }
+          document.getElementById("result").value = input + existingValue;
+        }
+    </script>
+  </body>
+
+</html>
