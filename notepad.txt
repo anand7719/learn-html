@@ -1,0 +1,2 @@
+When I click on "the Edit Icon"
+Then A text box show show with a board name
