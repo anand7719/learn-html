@@ -53,7 +53,7 @@
               <button type="button" class="btn-outline-primary btn-sm">Save</button>
               <button id="cancelEdit" type="button" class="btn btn-link btn-sm">Cancel</button>
             </span>
-            <a id="editLink" class="pr-2"><i class="fa fa-edit fa-2x pl-2"></i></a>
+            <a id="editLink" class="pr-2"><i class="fa fa-edit fa-sm pl-2 pt-2"></i></a>
           </div>
         </div>
         <div class="col-auto">
@@ -76,6 +76,7 @@
 
     <script>
       //Register Events
+      let columnIdIndex = 0;
       $(document).ready(function() {
         $("#editLink").click(function () {
           $("#boardNameInputId").removeClass("d-none");
@@ -85,26 +86,30 @@
           $("#boardNameInputId").addClass("d-none");
           $("#boardName").removeClass("d-none");
         });
+
         $("#addColumn").click(function () {
-          $("#rowId").append("<div class='col-sm'>\n" +
+          $("#rowId").append("<div id='column" + columnIdIndex + "' class='col-sm'>\n" +
             "          <span><lable>My new column</lable>" +
-            "<select class=\"selectpicker\" style='max-width: 10px'>\n" +
-            "  <option data-content=\"<span class='badge badge-success'>&nbsp;</span>\">&nbsp;</option>\n" +
+            "<select onchange='changeColumnColor(this)' class='selectpicker w-5'>\n" +
+                  "  <option value='info' data-content=\"<span class='badge badge-info'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                  "  <option value='primary' data-content=\"<span class='badge badge-primary'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                  "  <option value='success' data-content=\"<span class='badge badge-success'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                  "  <option value='danger' data-content=\"<span class='badge badge-danger'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
             "</select>\n</span><br>" +
-            "          <button id='addNewItem' type='button' class='btn btn-info' style='min-width: 25%;'>+</button>\n" +
+            "          <button  id='addNewItem' type='button' class='btn btn-info' style='min-width: 25%;'>+</button>\n" +
             "          <div id='bucket' style='max-width: 25%;'>\n" +
             "          </div>\n" +
             "        </div>\n");
+          columnIdIndex++;
           $("#addNewItem").click(function () {
             $("#bucket").append('<textarea rows="2" cols="50">');
           });
           $('select').selectpicker();
-
         });
-
-
       });
-
+      function changeColumnColor(element) {
+        console.log(element.options[element.selectedIndex].value);
+      }
     </script>
   </body>
 
