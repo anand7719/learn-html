@@ -1,124 +1,153 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <title>Retro | Add Board</title>
-    <style>
+  <title>Retro | Add Board</title>
+  <style>
     button {
       width: 125px;
       margin-bottom: 5px;
     }
-    </style>
+  </style>
 
-  </head>
-  <body style="min-height: 100%;">
+</head>
+<body style="min-height: 100%;">
 
-    <div class="container-fluid" style="min-height: 100%;">
-      <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
-        <i class="fa fa-road fa-lg" style="color: orange"><span>Add Board</span></i>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Teams</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item" style="float: right">
-              <a class="nav-link" href="#">Test User</a>
-            </li>
-          </ul>
-        </div>
+<div class="container-fluid" style="min-height: 100%;">
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary" >
+    <i class="fa fa-road fa-lg" style="color: orange"><span>Add Board</span></i>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Teams</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li>
+        <li class="nav-item" style="float: right">
+          <a class="nav-link" href="#">Test User</a>
+        </li>
+      </ul>
+    </div>
 
-      </nav>
+  </nav>
 
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-auto">
-          <div class="d-flex pt-2">
-            <h4 id="boardName" class="text-muted pr-2">new board</h4>
-            <span id="boardNameInputId" class="d-none">
-              <input class="pr-2" type="text" placeholder="new board">
-              <button type="button" class="btn-outline-primary btn-sm">Save</button>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-auto">
+        <div class="d-flex pt-2">
+          <h4 id="boardName" class="text-muted pr-2">new board</h4>
+          <span id="boardNameInputId" class="d-none">
+              <input id="boardNameInputFieldId"class="pr-2" type="text" placeholder="new board">
+              <button id="savebutton" type="button" class="btn-outline-primary btn-sm">Save</button>
               <button id="cancelEdit" type="button" class="btn btn-link btn-sm">Cancel</button>
             </span>
-            <a id="editLink" class="pr-2"><i class="fa fa-edit fa-sm pl-2 pt-2"></i></a>
-          </div>
+          <a id="editLink" class="pr-2"><i class="fa fa-edit fa-sm pl-2 pt-2"></i></a>
         </div>
-        <div class="col-auto">
+      </div>
+      <div class="col-auto">
         <div class="d-flex pt-2">
           <button id="addColumn" type="button" class="btn btn-info btn-sm">Add Column</button>
         </div>
-        </div>
       </div>
     </div>
-    <div id="boardContainer" class="container-fluid bg-light">
-      <div id="rowId" class="row" style="min-width: 100%;">
+  </div>
+  <div id="boardContainer" class="container-fluid bg-light">
+    <div id="rowId" class="row" style="min-width: 100%;">
 
+    </div>
+  </div>
+</div>
+<div id="alertModalId" class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <span>Number of Columns are limited to 4 for your plan, please upgrade to premium version for more columns.</span>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
-    </div>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
+  </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
 
-    <script>
-      //Register Events
-      let columnIdIndex = 0;
-      let columnIdMap = new Map();
-      $(document).ready(function() {
-        $("#editLink").click(function () {
-          $("#boardNameInputId").removeClass("d-none");
-          $("#boardName").addClass("d-none");
-        });
-        $("#cancelEdit").click(function () {
-          $("#boardNameInputId").addClass("d-none");
-          $("#boardName").removeClass("d-none");
-        });
-
-        $("#addColumn").click(function () {
-          $("#rowId").append("<div id='column" + columnIdIndex + "' class='columnDiv col-sm'>\n" +
-            "          <span><lable>My new column</lable>" +
-                      "<select name='selectColor' onchange='changeColumnColor(this)' class='selectColor selectpicker w-5'>\n" +
-                            "  <option value='info' data-content=\"<span class='badge badge-info'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-                            "  <option value='primary' data-content=\"<span class='badge badge-primary'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-                            "  <option value='success' data-content=\"<span class='badge badge-success'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-                            "  <option value='danger' data-content=\"<span class='badge badge-danger'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-                      "</select>\n</span><br>" +
-            "          <button name='addNewItem' type='button' class='addNewItem btn btn-info' style='min-width: 25%;'>+</button>\n" +
-            "          <div name='bucket' class='bucket' style='max-width: 25%;'>\n" +
-            "          </div>\n" +
-            "        </div>\n");
-          columnIdIndex++;
-          $(".addNewItem").click(function () {
-            $(".bucket").append('<textarea class="notes" rows="2" cols="50">');
-            let colDiv = $(this).parent();
-            color  = $(colDiv).find(".selectColor").find('option:selected').attr('value');
-            $(colDiv).find('.notes').addClass('btn-' + color);
-          });
-          $('select').selectpicker();
-        });
-      });
-      function changeColumnColor(element) {
-        let colDiv = $(element).parent().closest('.columnDiv');
-        $(colDiv).find('.addNewItem').removeClass('btn-info');
-        $(colDiv).find('.addNewItem').addClass('btn-' + element.options[element.selectedIndex].value);
-        $(colDiv).find('.notes').addClass('btn-' + element.options[element.selectedIndex].value)
-        columnIdMap[$(colDiv).attr("id")] = element.options[element.selectedIndex].value;
+<script>
+  //Register Events
+  let columnIdIndex = 0;
+  let columnIdMap = new Map();
+  $(document).ready(function() {
+    $("#editLink").click(function () {
+      $("#boardNameInputId").removeClass("d-none");
+      $("#boardName").addClass("d-none");
+    });
+    $("#cancelEdit").click(function () {
+      $("#boardNameInputId").addClass("d-none");
+      $("#boardName").removeClass("d-none");
+    });
+    $("#savebutton").click(function(){
+      $("#boardNameInputId").addClass("d-none");
+      $("#boardName").removeClass("d-none");
+      $("#boardName").text($("#boardNameInputFieldId").val())
+    });
+    $("#addColumn").click(function () {
+      if (columnIdIndex < 4) {
+        $("#rowId").append("<div id='column" + columnIdIndex + "' class='columnDiv pr-2' style='min-width: 20%'>\n" +
+                "          <span><lable>My new column</lable>" +
+                "<select name='selectColor' onchange='changeColumnColor(this)' class='selectColor selectpicker w-5'>\n" +
+                "  <option value='info' data-content=\"<span class='badge badge-info'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                "  <option value='primary' data-content=\"<span class='badge badge-primary'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                "  <option value='success' data-content=\"<span class='badge badge-success'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                "  <option value='danger' data-content=\"<span class='badge badge-danger'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                "</select>\n</span><br>" +
+              "          <button name='addNewItem' onclick='addNewItem(this)' type='button' class='addNewItem btn btn-info' style='min-width: 20%;'>+</button>\n" +
+                " <img onclick='removeColumn(this)' class='float-right' src='trash.png' width='20px' height='20px'/>" +
+              "          <div name='bucket' class='bucket' style='max-width: 20%;'>\n" +
+              "          </div>\n" +
+              "        </div>\n");
+        columnIdIndex++;
+      } else {
+        $("#alertModalId").modal();
       }
-    </script>
-  </body>
+
+      $('select').selectpicker();
+    });
+  });
+  function removeColumn(e) {
+    let colDiv = $(e).parent();
+    $(colDiv).remove();
+    columnIdIndex--;
+  }
+  function addNewItem(e) {
+
+    let colDiv = $(e).parent();
+    $(colDiv).find(".bucket").append('<textarea class="notes rounded" rows="2" cols="40">');
+    color = $(colDiv).find(".selectColor").find('option:selected').attr('value');
+    $(colDiv).find('.notes').addClass('btn-' + color);
+  }
+  function changeColumnColor(element) {
+    let colDiv = $(element).parent().closest('.columnDiv');
+    $(colDiv).find('.addNewItem').removeClass('btn-info');
+    $(colDiv).find('.addNewItem').addClass('btn-' + element.options[element.selectedIndex].value);
+    $(colDiv).find('.notes').addClass('btn-' + element.options[element.selectedIndex].value)
+    columnIdMap[$(colDiv).attr("id")] = element.options[element.selectedIndex].value;
+  }
+</script>
+</body>
 
 </html>
