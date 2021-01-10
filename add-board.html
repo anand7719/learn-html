@@ -77,6 +77,7 @@
     <script>
       //Register Events
       let columnIdIndex = 0;
+      let columnIdMap = new Map();
       $(document).ready(function() {
         $("#editLink").click(function () {
           $("#boardNameInputId").removeClass("d-none");
@@ -88,27 +89,34 @@
         });
 
         $("#addColumn").click(function () {
-          $("#rowId").append("<div id='column" + columnIdIndex + "' class='col-sm'>\n" +
+          $("#rowId").append("<div id='column" + columnIdIndex + "' class='columnDiv col-sm'>\n" +
             "          <span><lable>My new column</lable>" +
-            "<select onchange='changeColumnColor(this)' class='selectpicker w-5'>\n" +
-                  "  <option value='info' data-content=\"<span class='badge badge-info'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-                  "  <option value='primary' data-content=\"<span class='badge badge-primary'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-                  "  <option value='success' data-content=\"<span class='badge badge-success'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-                  "  <option value='danger' data-content=\"<span class='badge badge-danger'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
-            "</select>\n</span><br>" +
-            "          <button  id='addNewItem' type='button' class='btn btn-info' style='min-width: 25%;'>+</button>\n" +
-            "          <div id='bucket' style='max-width: 25%;'>\n" +
+                      "<select name='selectColor' onchange='changeColumnColor(this)' class='selectColor selectpicker w-5'>\n" +
+                            "  <option value='info' data-content=\"<span class='badge badge-info'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                            "  <option value='primary' data-content=\"<span class='badge badge-primary'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                            "  <option value='success' data-content=\"<span class='badge badge-success'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                            "  <option value='danger' data-content=\"<span class='badge badge-danger'>&nbsp;&nbsp;&nbsp;</span>\">&nbsp;</option>\n" +
+                      "</select>\n</span><br>" +
+            "          <button name='addNewItem' type='button' class='addNewItem btn btn-info' style='min-width: 25%;'>+</button>\n" +
+            "          <div name='bucket' class='bucket' style='max-width: 25%;'>\n" +
             "          </div>\n" +
             "        </div>\n");
           columnIdIndex++;
-          $("#addNewItem").click(function () {
-            $("#bucket").append('<textarea rows="2" cols="50">');
+          $(".addNewItem").click(function () {
+            $(".bucket").append('<textarea class="notes" rows="2" cols="50">');
+            let colDiv = $(this).parent();
+            color  = $(colDiv).find(".selectColor").find('option:selected').attr('value');
+            $(colDiv).find('.notes').addClass('btn-' + color);
           });
           $('select').selectpicker();
         });
       });
       function changeColumnColor(element) {
-        console.log(element.options[element.selectedIndex].value);
+        let colDiv = $(element).parent().closest('.columnDiv');
+        $(colDiv).find('.addNewItem').removeClass('btn-info');
+        $(colDiv).find('.addNewItem').addClass('btn-' + element.options[element.selectedIndex].value);
+        $(colDiv).find('.notes').addClass('btn-' + element.options[element.selectedIndex].value)
+        columnIdMap[$(colDiv).attr("id")] = element.options[element.selectedIndex].value;
       }
     </script>
   </body>
