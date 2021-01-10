@@ -50,7 +50,7 @@
             <h4 id="boardName" class="text-muted pr-2">new board</h4>
             <span id="boardNameInputId" class="d-none">
               <input class="pr-2" type="text" placeholder="new board">
-              <button type="button" class="btn-outline-primary btn-sm">Save</button>
+              <button id="savebutton" type="button" class="btn-outline-primary btn-sm">Save</button>
               <button id="cancelEdit" type="button" class="btn btn-link btn-sm">Cancel</button>
             </span>
             <a id="editLink" class="pr-2"><i class="fa fa-edit fa-sm pl-2 pt-2"></i></a>
@@ -87,7 +87,10 @@
           $("#boardNameInputId").addClass("d-none");
           $("#boardName").removeClass("d-none");
         });
-
+        $("#savebutton").click(function(){
+  $("#cancelEdit").remove();
+  $("#savebutton").remove();
+});
         $("#addColumn").click(function () {
           $("#rowId").append("<div id='column" + columnIdIndex + "' class='columnDiv col-sm'>\n" +
             "          <span><lable>My new column</lable>" +
